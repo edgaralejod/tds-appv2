@@ -1,0 +1,59 @@
+<!doctype html>
+
+<html>
+<head>
+  <title>Water Quality Project</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+
+  <link rel="import" href="bower_components/iron-icons/iron-icons.html">
+  <link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
+  <!-- <link rel="import" href="bower_components/font-roboto/roboto.html"> -->
+  <link rel="import" href="bower_components/paper-button/paper-button.html">
+  <link rel="import" href="bower_components/paper-checkbox/paper-checkbox.html">
+  <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+  <link rel="import" href="bower_components/paper-fab/paper-fab.html">
+  <link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
+  <link rel="import" href="bower_components/paper-toast/paper-toast.html">
+  <link rel="import" href="bower_components/paper-input/paper-input.html"
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body unresolved>
+  <paper-toolbar>
+    <paper-icon-button icon="menu"></paper-icon-button>
+    <span class="flex">Water Quality Project </span>
+  </paper-toolbar>
+
+  <section>
+      <template is="dom-bind" id="app">
+    <form on-submit="addItem">
+      <paper-input value="{{newItemValue}}" 
+        placeholder="Enter your item here..."></paper-input>
+      <paper-button on-click="addItem">Add</paper-button>
+    </form>
+    <template is="dom-repeat" items="{{items}}">
+      <div>
+        <paper-icon-button icon="delete" 
+          on-click="deleteItem"></paper-icon-button>
+        <paper-checkbox on-change="toggleItem"
+          checked="{{item.done}}">[[item.text]]</paper-checkbox>
+      </div>
+    </template>
+  </template>
+  </section>
+
+  <section>
+    <template id="toastGroup" is="dom-bind">
+      <paper-button raised right on-click="showToast">Show Toast</paper-button>
+      <paper-toast id="toast" text="Sample toast here."></paper-toast>
+    </template>
+  </section>
+
+  <script src="main.js"></script>
+</body>
+</html>
